@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="card p-4 shadow-sm">
+
+    <h2>{{ painting.title }}</h2>
+
+    <p>
+        <strong>Artist:</strong>
+        <a href="{% url 'museum:artist-detail' painting.artist.id %}">
+            {{ painting.artist.first_name }} {{ painting.artist.last_name }}
+        </a>
+    </p>
+
+    <p>
+        <strong>Genre:</strong>
+        <a href="{% url 'museum:genre-detail' painting.genre.id %}">
+            {{ painting.genre.name }}
+        </a>
+    </p>
+
+    <ul>
+      Price: {{ painting.price }}
+      <br>
+      Year created: {{ painting.year_created }}
+      <br>
+    </ul>
+
+    <hr>
+
+    <div class="mt-3">
+
+        <a href="{% url 'museum:painting-update' painting.id %}"
+           class="btn btn-warning">
+            Edit
+        </a>
+
+        <a href="{% url 'museum:paintings' %}"
+           class="btn btn-secondary ml-2">
+            Back to List
+        </a>
+
+    </div>
+
+</div>
+
+{% endblock %}

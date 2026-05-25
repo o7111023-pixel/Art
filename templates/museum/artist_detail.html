@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="card p-4 shadow-sm">
+
+    <h2>
+        {{ artist.first_name }} {{ artist.last_name }}
+    </h2>
+
+    <p class="text-muted">
+        Username: {{ artist.username }}
+        <br>
+        Birth year: {{ artist.birth_year }}
+        <br>
+        Paintings count: {{ artist.paintings.count }}
+    </p>
+
+    <hr>
+
+    <h4>Paintings</h4>
+
+    <ul>
+        {% for painting in artist.paintings.all %}
+            <li>
+                <a href="{% url 'museum:painting-detail' painting.id %}">
+                    {{ painting.title }}
+                </a>
+            </li>
+        {% empty %}
+            <li>No paintings yet</li>
+        {% endfor %}
+    </ul>
+
+    <hr>
+
+    <div>
+        <a href="{% url 'museum:artist-update' artist.id %}" class="btn btn-warning">
+            Update
+        </a>
+
+        <a href="{% url 'museum:artists' %}" class="btn btn-secondary">
+            Back to List
+        </a>
+    </div>
+
+</div>
+
+{% endblock %}

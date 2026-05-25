@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2>{{ genre.name }}</h2>
+
+<hr>
+
+<h4>Paintings in this genre</h4>
+
+<ul>
+    {% for painting in genre.paintings.all %}
+        <li>
+            {{ painting.title }}
+        </li>
+    {% empty %}
+        <li>No paintings in this genre</li>
+    {% endfor %}
+</ul>
+
+<a href="{% url 'museum:genres' %}" class="btn btn-secondary mt-3">
+    Back
+</a>
+
+{% endblock %}

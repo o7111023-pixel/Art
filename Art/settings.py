@@ -129,11 +129,11 @@ STATIC_URL = "static/"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 
-# AUTH_USER_MODEL = "museum."
+AUTH_USER_MODEL = "museum.Artist"
 
-LOGIN_URL = "/registration/login/"
-LOGIN_REDIRECT_URL = "/museum/"
-LOGOUT_REDIRECT_URL = "/museum/"
+LOGIN_URL = "/accounts/login/"
+LOGIN_REDIRECT_URL = "museum:index"
+LOGOUT_REDIRECT_URL = "/accounts/login/"
 
 INTERNAL_IPS = [
     "127.0.0.1",

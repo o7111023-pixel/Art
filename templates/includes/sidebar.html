@@ -1,0 +1,26 @@
+<div class="sidebar-inner">
+
+    {% if user.is_authenticated %}
+        <div class="sidebar-user">
+            {{ user.username }}
+        </div>
+
+    {% else %}
+        <a href="{% url 'login' %}" class="sidebar-login">
+            Login
+        </a>
+    {% endif %}
+
+    <hr class="sidebar-sep">
+
+    <ul>
+      <a href="{% url 'museum:index' %}">Home</a>
+      <br>
+      <a href="{% url 'museum:artists' %}">Artists</a>
+      <br>
+      <a href="{% url 'museum:paintings' %}">Paintings</a>
+      <br>
+      <a href="{% url 'museum:genres' %}">Genres</a>
+    </ul>
+
+</div>
