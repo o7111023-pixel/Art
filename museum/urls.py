@@ -17,6 +17,7 @@ from .views import (
     PaintingDeleteView,
     toggle_favorite_painting,
     GenreDetailView,
+    InterCollectionView,
 )
 
 app_name = "museum"
@@ -45,4 +46,5 @@ urlpatterns = [
     path(
     "paintings/<int:pk>/toggle-favorite/", toggle_favorite_painting,
         name="toggle-favorite-painting"),
+    path("intercollection/", InterCollectionView.as_view(), name="intercollection"),
 ]

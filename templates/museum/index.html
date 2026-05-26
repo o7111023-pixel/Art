@@ -1,16 +1,14 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block content %}
 
 <div class="museum-hero">
 
-    <!-- background glow -->
     <div class="glow one"></div>
     <div class="glow two"></div>
     <div class="glow three"></div>
 
-
-    <!-- CENTER -->
     <div class="center-box">
 
         <h1>Museum</h1>
@@ -19,8 +17,8 @@
 
         {% if user.is_authenticated %}
 
-            <a href="{% url 'museum:paintings' %}" class="btn btn-success btn-soft">
-                Enter Collection
+            <a href="{% url 'museum:intercollection' %}" class="btn btn-success btn-soft">
+                allgemeine Galerie
             </a>
 
             <form method="post" action="/accounts/logout/">
@@ -32,12 +30,9 @@
 
         {% else %}
 
-            <a href="{% url '/accounts/login/' %}" class="btn btn-primary btn-soft">
-                Enter Museum
-            </a>
-
-            <a href="#" class="btn btn-outline-light btn-soft">
-                Register
+            <!-- LOGIN -->
+            <a href="/accounts/login/" class="btn btn-primary btn-soft">
+                Login
             </a>
 
         {% endif %}

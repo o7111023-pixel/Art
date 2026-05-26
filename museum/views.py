@@ -1,9 +1,10 @@
+from django.contrib.auth.forms import UserCreationForm
 from django.http import HttpResponseRedirect
 from django.views import generic
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 from .models import Artist, Painting, Genre
 
@@ -68,7 +69,7 @@ class ArtistDeleteView(LoginRequiredMixin, generic.DeleteView):
 
 class PaintingListView(LoginRequiredMixin, generic.ListView):
     model = Painting
-    paginate_by = 3
+    paginate_by = 5
     template_name = "museum/painting_list.html"
     context_object_name = "painting_list"
 
@@ -123,6 +124,12 @@ class GenreDeleteView(LoginRequiredMixin, generic.DeleteView):
 class GenreDetailView(LoginRequiredMixin, generic.DetailView):
     model = Genre
     template_name = "museum/genre_detail.html"
+
+
+class InterCollectionView(LoginRequiredMixin, generic.ListView):
+    model = Painting
+    template_name = "museum/intercollection.html"
+    context_object_name = "items"
 
 
 @login_required

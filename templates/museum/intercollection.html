@@ -1,0 +1,171 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+<style>
+
+    body {
+        background: #111;
+    }
+
+    .top-bar {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        z-index: 1000;
+    }
+
+    .back-button {
+        padding: 12px 20px;
+        background: rgba(0,0,0,0.7);
+        backdrop-filter: blur(6px);
+
+        color: white;
+        text-decoration: none;
+
+        border-radius: 12px;
+        font-weight: bold;
+
+        transition: 0.25s;
+        border: 1px solid rgba(255,255,255,0.15);
+    }
+
+    .back-button:hover {
+        background: rgba(255,255,255,0.15);
+    }
+
+    .gallery {
+        display: flex;
+        flex-direction: column;
+        gap: 50px;
+
+        padding-top: 100px;
+        padding-bottom: 60px;
+    }
+
+    .image-box {
+        position: relative;
+
+        width: 100%;
+        max-width: 1100px;
+
+        margin: 0 auto;
+
+        border-radius: 18px;
+        overflow: hidden;
+
+        background: #1a1a1a;
+
+        box-shadow:
+            0 10px 40px rgba(0,0,0,0.5),
+            0 0 20px rgba(255,255,255,0.03);
+    }
+
+    .image-box img {
+        width: 100%;
+        display: block;
+    }
+
+    /* тёмная кинематографичная заливка */
+    .image-box::after {
+        content: "";
+
+        position: absolute;
+        inset: 0;
+
+        background:
+            linear-gradient(
+                to bottom,
+                rgba(0,0,0,0.15),
+                rgba(0,0,0,0.35)
+            );
+
+        pointer-events: none;
+    }
+
+</style>
+
+<div class="top-bar">
+    <a href="javascript:history.back()" class="back-button">
+        Back
+    </a>
+</div>
+
+<div class="gallery">
+
+    <div class="image-box">
+        <img src="{% static 'museum/images/pict11.jpg' %}" alt="">
+    </div>
+
+    <div class="image-box">
+        <img src="{% static 'museum/images/pick13.jpg' %}" alt="">
+    </div>
+
+    <div class="image-box">
+        <img src="{% static 'museum/images/pick29.jpg' %}" alt="">
+    </div>
+
+    <div class="image-box">
+        <img src="{% static 'museum/images/pick14.jpg' %}" alt="">
+    </div>
+
+    <div class="image-box">
+        <img src="{% static 'museum/images/pick15.jpg' %}" alt="">
+    </div>
+
+    <div class="image-box">
+        <img src="{% static 'museum/images/pick16.jpg' %}" alt="">
+    </div>
+
+    <div class="image-box">
+        <img src="{% static 'museum/images/pick17.jpg' %}" alt="">
+    </div>
+
+    <div class="image-box">
+        <img src="{% static 'museum/images/pick18.jpg' %}" alt="">
+    </div>
+
+    <div class="image-box">
+        <img src="{% static 'museum/images/pick19.jpg' %}" alt="">
+    </div>
+
+    <div class="image-box">
+        <img src="{% static 'museum/images/pick20.jpg' %}" alt="">
+    </div>
+
+    <div class="image-box">
+        <img src="{% static 'museum/images/pick28.jpg' %}" alt="">
+    </div>
+
+    <div class="image-box">
+        <img src="{% static 'museum/images/pick27.jpg' %}" alt="">
+    </div>
+
+   <div class="image-box">
+        <img src="{% static 'museum/images/pick26.jpg' %}" alt="">
+    </div>
+
+   <div class="image-box">
+        <img src="{% static 'museum/images/pick25.jpg' %}" alt="">
+    </div>
+
+   <div class="image-box">
+        <img src="{% static 'museum/images/pick24.jpg' %}" alt="">
+   </div>
+
+   <div class="image-box">
+        <img src="{% static 'museum/images/pick23.jpg' %}" alt="">
+   </div>
+
+   <div class="image-box">
+        <img src="{% static 'museum/images/pick22.jpg' %}" alt="">
+   </div>
+
+   <div class="image-box">
+        <img src="{% static 'museum/images/pick21.jpg' %}" alt="">
+   </div>
+
+</div>
+
+{% endblock %}

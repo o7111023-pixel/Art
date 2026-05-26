@@ -1,28 +1,43 @@
-{% extends "base.html" %}
+{% load static %}
 {% load crispy_forms_filters %}
 
-{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Auth | Museum</title>
 
-<h1>Login</h1>
+    <link rel="stylesheet" href="{% static 'museum/css/auth.css' %}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+</head>
 
-{% if form.errors %}
-  <p style="color:red">Wrong credentials</p>
-{% endif %}
+<body class="auth-page">
 
-{% if next %}
-  <p>Please log in to continue.</p>
-{% endif %}
+<div class="auth-center">
 
-<form method="post" action="{% url 'login' %}">
-  {% csrf_token %}
+    <div class="auth-card">
 
-  {{ form|crispy }}
+        <h1>🏛 Museum Access</h1>
 
-  <button class="btn btn-primary" type="submit">
-    Login
-  </button>
+        {% if form.errors %}
+            <div class="auth-error">Wrong credentials</div>
+        {% endif %}
 
-  <input type="hidden" name="next" value="{{ next }}">
-</form>
+        <form method="post">
+            {% csrf_token %}
 
-{% endblock %}
+            {{ form|crispy }}
+
+            <button type="submit" class="btn auth-btn">
+                Login
+            </button>
+
+            <input type="hidden" name="next" value="{{ next }}">
+        </form>
+
+    </div>
+
+</div>
+
+</body>
+</html>

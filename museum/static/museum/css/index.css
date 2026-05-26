@@ -1,0 +1,62 @@
+.museum-hero {
+    position: relative;
+    min-height: 100vh;
+
+    background-image:
+        linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.7)),
+        url("../images/pict1.jpg");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    overflow: hidden;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.center-box {
+    position: relative;
+    z-index: 2;
+
+    text-align: center;
+    color: white;
+}
+
+.btn-soft {
+    margin-top: 12px;
+}
+
+.glow {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(120px);
+    opacity: 0.25;
+}
+
+.glow.one {
+    width: 300px;
+    height: 300px;
+    background: purple;
+    top: 10%;
+    left: 10%;
+}
+
+.glow.two {
+    width: 400px;
+    height: 400px;
+    background: blue;
+    bottom: 10%;
+    right: 10%;
+}
+
+.glow.three {
+    width: 250px;
+    height: 250px;
+    background: crimson;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
