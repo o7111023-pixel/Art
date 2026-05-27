@@ -1,62 +1,140 @@
+/* ===== RESET ===== */
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    overflow-x: hidden;
+    font-family: "Inter", "Segoe UI", sans-serif;
+    color: #f2f6ff;
+}
+
+/* ===== BACKGROUND ===== */
+body {
+    background: radial-gradient(circle at top,
+        #1a1f3a 0%,
+        #0e0f1a 50%,
+        black 100%);
+}
+
+/* ===== HERO ===== */
 .museum-hero {
     position: relative;
     min-height: 100vh;
+    width: 100%;
+    display: flex;
 
-    background-image:
-        linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.7)),
-        url("../images/pict1.jpg");
-
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+    /* 👇 ВОТ ГЛАВНОЕ ИЗМЕНЕНИЕ */
+    align-items: flex-start;
+    justify-content: center;
 
     overflow: hidden;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
 .center-box {
-    position: relative;
-    z-index: 2;
-
-    text-align: center;
-    color: white;
+    transform: translateY(-60px);
 }
 
-.btn-soft {
-    margin-top: 12px;
-}
-
+/* ===== LIGHT EFFECTS (мягкие и легче) ===== */
 .glow {
     position: absolute;
+    width: 500px;
+    height: 500px;
     border-radius: 50%;
-    filter: blur(120px);
-    opacity: 0.25;
+    filter: blur(140px);
+    opacity: 0.2;
+    z-index: 1;
 }
 
 .glow.one {
-    width: 300px;
-    height: 300px;
-    background: purple;
-    top: 10%;
-    left: 10%;
+    background: #4aa3ff;
+    top: -10%;
+    left: -10%;
 }
 
 .glow.two {
-    width: 400px;
-    height: 400px;
-    background: blue;
-    bottom: 10%;
-    right: 10%;
+    background: #8b5cf6;
+    bottom: -10%;
+    right: -10%;
 }
 
 .glow.three {
-    width: 250px;
-    height: 250px;
-    background: crimson;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    background: #ffb86b;
+    top: 30%;
+    right: 20%;
+}
+
+/* ===== GLASS PANEL ===== */
+.center-box {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+
+    padding: 50px 70px;
+    border-radius: 24px;
+
+    background: rgba(255, 255, 255, 0.07);
+    border: 1px solid rgba(120, 150, 255, 0.18);
+
+    backdrop-filter: blur(28px);
+
+    box-shadow: 0 40px 120px rgba(0, 0, 0, 0.65);
+}
+
+/* ===== TEXT ===== */
+.center-box h1 {
+    font-size: 70px;
+    margin: 0;
+    font-weight: 300;
+    letter-spacing: 3px;
+
+    background: linear-gradient(90deg, #9ecbff, #b69cff, #ffd1a1);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.center-box p {
+    margin-top: 10px;
+    font-size: 18px;
+    opacity: 0.7;
+}
+
+/* ===== BUTTONS ===== */
+.btn {
+    display: inline-block;
+    padding: 12px 20px;
+    margin-top: 18px;
+    margin-right: 10px;
+
+    border-radius: 12px;
+    text-decoration: none;
+    transition: 0.25s ease;
+
+    backdrop-filter: blur(10px);
+}
+
+/* login */
+.btn-primary.btn-soft {
+    background: rgba(80, 140, 255, 0.18);
+    border: 1px solid rgba(140, 180, 255, 0.25);
+    color: white;
+}
+
+/* gallery */
+.btn-success.btn-soft {
+    background: rgba(140, 100, 255, 0.14);
+    border: 1px solid rgba(180, 150, 255, 0.22);
+    color: white;
+}
+
+/* logout */
+.btn-outline-light.btn-soft {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: rgba(255, 255, 255, 0.7);
+}
+
+/* hover */
+.btn:hover {
+    transform: translateY(-5px);
 }

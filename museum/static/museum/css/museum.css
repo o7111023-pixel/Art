@@ -1,0 +1,91 @@
+/* ===== BACKGROUND (оставляем атмосферу) ===== */
+body {
+    background: radial-gradient(circle at top,
+        #161c2e 0%,
+        #0b0f18 55%,
+        #05070c 100%);
+    color: #f3f7ff;
+}
+
+/* ===== LIST ITEM (УЛУЧШЕННАЯ ЧИТАЕМОСТЬ) ===== */
+.list-group-item {
+    background: rgba(15, 20, 35, 0.75) !important;
+    border: 1px solid rgba(120, 150, 255, 0.18) !important;
+
+    color: #f5f9ff !important;
+
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+
+    transition: 0.25s ease;
+}
+
+/* hover — ярче, но аккуратно */
+.list-group-item:hover {
+    background: rgba(25, 35, 60, 0.85) !important;
+    border-color: rgba(160, 190, 255, 0.35) !important;
+}
+
+/* ===== TITLE LINKS (artist / painting names) ===== */
+.list-group-item a {
+    color: #ffffff !important;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+/* hover link */
+.list-group-item a:hover {
+    color: #9ecbff !important;
+}
+
+/* ===== YEAR TEXT (очень важно для читаемости) ===== */
+.list-group-item small.text-muted {
+    color: rgba(200, 210, 230, 0.65) !important;
+}
+
+/* ===== HEADER TITLE ===== */
+h2 {
+    color: #ffffff;
+    font-weight: 300;
+    letter-spacing: 1px;
+}
+
+/* ===== BUTTONS ===== */
+
+/* ADD BUTTON (+) */
+.btn-primary {
+    background: rgba(90, 140, 255, 0.22) !important;
+    border: 1px solid rgba(140, 180, 255, 0.35) !important;
+    color: #fff !important;
+}
+
+.btn-primary:hover {
+    background: rgba(110, 160, 255, 0.35) !important;
+}
+
+/* UPDATE */
+.btn-outline-secondary {
+    color: #d6e6ff !important;
+    border-color: rgba(180, 200, 230, 0.3) !important;
+}
+
+.btn-outline-secondary:hover {
+    background: rgba(120, 160, 255, 0.18) !important;
+    color: #fff !important;
+}
+
+/* DELETE */
+.btn-outline-danger {
+    color: #ff9aa5 !important;
+    border-color: rgba(255, 120, 140, 0.35) !important;
+}
+
+.btn-outline-danger:hover {
+    background: rgba(255, 120, 140, 0.18) !important;
+    color: #fff !important;
+}
+
+/* EMPTY TEXT */
+.text-muted {
+    color: rgba(220, 230, 245, 0.55) !important;
+}
