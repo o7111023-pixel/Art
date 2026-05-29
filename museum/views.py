@@ -1,41 +1,31 @@
-from django.contrib.auth.forms import UserCreationForm
-from django.http import HttpResponseRedirect
-from django.views import generic
-from django.urls import reverse_lazy
+from django.views import generic, View
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.contrib.auth.decorators import login_required
-from django.shortcuts import render, redirect
+from django.http import HttpResponseRedirect
+from django.urls import reverse_lazy
+from django.views.generic import TemplateView
 
-from .models import Artist, Painting, Genre
+from museum.models import Artist, Painting, Genre
 
 
-@login_required
-def index(request):
-    """View function for the home page."""
+class IndexView(LoginRequiredMixin, TemplateView):
+    template_name = "museum/index.html"
 
-    num_artists = Artist.objects.count()
-    num_paintings = Painting.objects.count()
-    num_genres = Genre.objects.count()
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
 
-    num_visits = request.session.get("num_visits", 0)
-    request.session["num_visits"] = num_visits + 1
+        num_visits = self.request.session.get("num_visits", 0)
+        self.request.session["num_visits"] = num_visits + 1
 
-    artists = Artist.objects.all()
-    paintings = Painting.objects.all()
-    genres = Genre.objects.all()
+        context["num_artists"] = Artist.objects.count()
+        context["num_paintings"] = Painting.objects.count()
+        context["num_genres"] = Genre.objects.count()
+        context["num_visits"] = num_visits + 1
 
-    context = {
-        "num_artists": num_artists,
-        "num_paintings": num_paintings,
-        "num_genres": num_genres,
-        "num_visits": num_visits + 1,
+        context["artists"] = Artist.objects.all()
+        context["paintings"] = Painting.objects.all()
+        context["genres"] = Genre.objects.all()
 
-        "artists": artists,
-        "paintings": paintings,
-        "genres": genres,
-    }
-
-    return render(request, "museum/index.html", context=context)
+        return context
 
 
 class ArtistListView(LoginRequiredMixin, generic.ListView):
@@ -132,16 +122,16 @@ class InterCollectionView(LoginRequiredMixin, generic.ListView):
     context_object_name = "items"
 
 
-@login_required
-def toggle_favorite_painting(request, pk):
-    artist = Artist.objects.get(id=request.user.id)
-    painting = Painting.objects.get(id=pk)
+class ToggleFavoritePaintingView(LoginRequiredMixin, View):
+    def post(self, request, pk):
+        artist = Artist.objects.get(id=request.user.id)
+        painting = Painting.objects.get(id=pk)
 
-    if painting in artist.favorite_paintings.all():
-        artist.favorite_paintings.remove(painting)
-    else:
-        artist.favorite_paintings.add(painting)
+        if painting in artist.favorite_paintings.all():
+            artist.favorite_paintings.remove(painting)
+        else:
+            artist.favorite_paintings.add(painting)
 
-    return HttpResponseRedirect(
-        reverse_lazy("museum:painting-detail", args=[pk])
-    )
+        return HttpResponseRedirect(
+            reverse_lazy("museum:painting-detail", args=[pk])
+        )

@@ -1,6 +1,6 @@
 from django.urls import path
 from .views import (
-    index,
+    IndexView,
     ArtistListView,
     PaintingListView,
     GenreListView,
@@ -15,7 +15,7 @@ from .views import (
     ArtistUpdateView,
     ArtistDeleteView,
     PaintingDeleteView,
-    toggle_favorite_painting,
+    ToggleFavoritePaintingView,
     GenreDetailView,
     InterCollectionView,
 )
@@ -23,7 +23,7 @@ from .views import (
 app_name = "museum"
 
 urlpatterns = [
-    path("", index, name="index"),
+    path("", IndexView.as_view(), name="index"),
 
     path("artists/", ArtistListView.as_view(), name="artists"),
     path("artists/create/", ArtistCreateView.as_view(), name="artist-create"),
@@ -44,7 +44,7 @@ urlpatterns = [
     path("genres/<int:pk>/delete/", GenreDeleteView.as_view(), name="genre-delete"),
 
     path(
-    "paintings/<int:pk>/toggle-favorite/", toggle_favorite_painting,
+    "paintings/<int:pk>/toggle-favorite/", ToggleFavoritePaintingView.as_view(),
         name="toggle-favorite-painting"),
     path("intercollection/", InterCollectionView.as_view(), name="intercollection"),
 ]

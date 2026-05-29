@@ -2,7 +2,7 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.core.exceptions import ValidationError
 
-from .models import Artist, Painting
+from museum.models import Artist, Painting
 
 
 class ArtistCreationForm(UserCreationForm):
