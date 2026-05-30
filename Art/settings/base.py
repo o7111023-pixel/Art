@@ -105,9 +105,9 @@ STATIC_URL = "static/"
 STATIC_ROOT = "staticfiles/"
 MEDIA_URL = "media/"
 
-STATICFILES_DIRS = [
-    BASE_DIR / "static",
-]
+# STATICFILES_DIRS = [
+#     BASE_DIR / "static",
+# ]
 
 ASSETS_ROOT = "/static/assets/"
 

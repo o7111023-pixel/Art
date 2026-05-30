@@ -1,0 +1,117 @@
+body.auth-page {
+    margin: 0;
+    height: 100vh;
+    width: 100vw;
+
+    /* full screen museum vibe */
+    background: radial-gradient(circle at top,
+        #1e293b,
+        #0b1220 40%,
+        #05060a 100%
+    );
+
+    overflow: hidden;
+    font-family: system-ui, Arial;
+}
+
+/* floating light effects (museum glow) */
+body.auth-page::before {
+    content: "";
+    position: absolute;
+    width: 700px;
+    height: 700px;
+    background: rgba(59,130,246,0.18);
+    filter: blur(140px);
+    top: -150px;
+    left: -150px;
+}
+
+body.auth-page::after {
+    content: "";
+    position: absolute;
+    width: 700px;
+    height: 700px;
+    background: rgba(168,85,247,0.15);
+    filter: blur(140px);
+    bottom: -150px;
+    right: -150px;
+}
+
+/* FULL SCREEN CENTER */
+.auth-center {
+    height: 100vh;
+    width: 100vw;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: relative;
+    z-index: 2;
+}
+
+/* GLASS CARD */
+.auth-card {
+    width: 420px;
+    padding: 40px;
+
+    background: rgba(15, 23, 42, 0.75);
+    backdrop-filter: blur(15px);
+
+    border-radius: 18px;
+    border: 1px solid rgba(255,255,255,0.08);
+
+    box-shadow: 0 30px 80px rgba(0,0,0,0.7);
+
+    text-align: center;
+}
+
+/* title */
+.auth-card h1 {
+    color: #e5e7eb;
+    margin-bottom: 25px;
+    font-size: 26px;
+}
+
+/* crispy form inputs fix */
+.auth-card input {
+    width: 100%;
+    padding: 12px;
+
+    margin-bottom: 10px;
+
+    border-radius: 10px;
+    border: 1px solid rgba(255,255,255,0.1);
+
+    background: #0b1220;
+    color: white;
+}
+
+/* button */
+.auth-btn {
+    width: 100%;
+    margin-top: 10px;
+
+    padding: 12px;
+
+    border: none;
+    border-radius: 10px;
+
+    background: linear-gradient(90deg, #3b82f6, #a855f7);
+    color: white;
+
+    font-weight: 600;
+
+    transition: 0.2s;
+}
+
+.auth-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 15px 40px rgba(59,130,246,0.3);
+}
+
+/* error */
+.auth-error {
+    color: #f87171;
+    margin-bottom: 10px;
+}
